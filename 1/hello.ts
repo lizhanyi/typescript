@@ -96,15 +96,15 @@ class Memory {
   prevZoeo = ( str: string ): string => str.padStart(2, '0')
 }
 
-const defer = (): any => new Promise( ( resolve: (a: any ) => void, reject )=> {
+const defer = (): Promise<{}> => new Promise( resolve => {
   setTimeout( () => {
     resolve( 10 );
   }, 1000 );
 });
 
 
-defer().finally( (data: any): void => {
-  console.log( data ); 
+defer().finally( ()=> {
+  console.log(  ); 
 })
 
 class Static {
@@ -178,6 +178,79 @@ class AbsChild extends Abstract{
 }
 
 const abschild = new AbsChild( 'name' )
+
+/**
+ * * 接口 *
+ * * 接口是一种规范和标准，定义了某一类所需要遵守的规则
+ * * 接口不关心这些类的内部状态，不关心内部实现的细节，只规范这批类必须提供的属性和方法
+ * * typescript 接口类似 JAVA，同时还增加了更灵活的接口类型，包括属性、函数、可索引和类等。
+ */
+
+interface FullName {
+  firstName: string;
+  lastName: string;
+}
+
+/**
+ * * 函数类型的接口 *
+ * * ---- 接口规定 方法的 传参、返回值 ----
+ * * (1) 对 json 的约束
+ * * (2) 函数类型接口，可以批量约束
+ * * (3) 可索引接口
+ * * (4) 类类型接口
+ * * (5) 接口扩展
+ */
+
+ /**
+  * @param { key: string }
+  * @param { value: string }
+  */
+interface encrypt {
+  ( key: string, value: string ): string
+}
+const md5: encrypt = ( key, value ) => key + value;
+const sha1: encrypt = (key, value ) => key + '--' + value;
+
+const arr11: number[] = [ 1, 2, 3 ];
+const arr12: Array<string> = [ '1', '2' ];
+/**
+ * * 可索引接口( 对数组 和 对象的约束 ) 
+ */
+interface userArr {
+  [ index: number ]: string
+}
+const arr13: userArr = [ '1212' ];
+
+interface userJson {
+  [ index: string ]: string
+}
+const arr14: userJson = { 'name': 'name', age: 'age' };
+
+
+/**
+ * * 类类型接口( 对类的约束，与抽象类有点相似 )
+ * 
+ */
+interface AAA{
+  name: string;
+  eat( str: string ): void;
+}
+
+class Pig implements AAA {
+  name: string;
+  constructor( name: string ){
+    this.name = name;
+  }
+  eat(){
+    return 
+  }
+}
+
+const pig = new Pig( 'pig' );
+pig.eat()
+
+
+
 
 
 
