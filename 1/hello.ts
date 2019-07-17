@@ -249,6 +249,40 @@ class Pig implements AAA {
 const pig = new Pig( 'pig' );
 pig.eat()
 
+// ------------------------------
+/**
+ * * 接口扩展
+ */
+interface Animal2{
+  eat(): void;
+}
+interface Person2 extends Animal2{
+  work(): void;
+}
+
+class Web implements Person2 {
+  public name: string;
+  constructor( name: string){
+    this.name = name;
+  }
+  eat(){
+    console.log( this.name, 'name' );
+  }
+  work(){
+    console.log( 'work' );
+  }
+}
+
+class Programmer{
+  public name: string;
+  constructor( name: string ){
+      this.name = name;
+  }
+  coding( code: string ){
+      console.log( code, '123456789' );
+  }
+}
+
 
 
 

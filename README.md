@@ -167,4 +167,49 @@
     pig.eat()
     ```
 + 接口扩展
+    ```typescript
+    // 通过 extends 接口继承， 类必须实现被继承后的接口
+    interface Animal{
+        eat(): void;
+    }
+    interface Person extends Animal{
+        work(): void;
+    }
+    // 必须实现 eat 和 work 方法
+    class Web implements Person {
+        public name: string;
+        constructor( name: string ){
+            this.name = name;
+        }
+        eat(){
+            console.log( this.name, 'name' );
+        }
+        work(){
+            console.log( 'work' );
+        }
+    }
+
+    // 继承并实现接口
+    class Programmer{
+        public name: string;
+        constructor( name: string ){
+            this.name = name;
+        }
+        coding( code: string ){
+            console.log( code, '123456789' );
+        }
+    }
+    class Web extends Programmer implements Person{
+        constructor(){
+            super( name )
+        }
+        eat(){
+
+        }
+        work(){
+            
+        }
+    }
+    ```
+
 
